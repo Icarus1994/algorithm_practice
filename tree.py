@@ -39,7 +39,6 @@ class Solution:
             node.setRight(self.reConstructBinaryTree(pre[leftTreeLen+1:],tin[leftTreeLen+1:]))
         return node
 
-
 pre = [1,2,4,7,3,5,6,8]
 tin = [4,7,2,1,5,3,8,6]
 solu = Solution()
