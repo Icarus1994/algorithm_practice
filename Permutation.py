@@ -13,6 +13,8 @@ class Solution:
                 if "".join(i) not in result:
                     result.append("".join(i))
         return result
+
+
 if __name__ == "__main__":
     str = "aAv"
     for i in itertools.permutations(str,3):

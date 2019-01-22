@@ -4,7 +4,7 @@ class Solution:
         # write code here
         if not tinput or (k <= 0) or (k > len(tinput)):
             return []
-        # 类似冒泡排序法，只将前K个数冒到数组前面
+        # 类似冒泡排序法，只将前k个数冒到数组前面
         for i in range(0, k):
             m = i
             for j in range(i,len(tinput)):
