@@ -35,36 +35,36 @@ class Solution:
                     return False
 
     def match(self, s, pattern):
-        print(s,pattern)
         if len(s) == 0 and len(pattern) == 0:
             return True
+        elif len(pattern) == 0 and len(s) != 0:
+            return False
         elif len(s) == 0 and len(pattern) != 0:
             if len(pattern) > 1 and pattern[1] == "*":
                 return self.match(s,pattern[2:])
             else:
                 return False
-        elif len(pattern) == 0 and len(s) != 0:
-            return False
         else:
             if len(pattern) > 1 and pattern[1] == "*":
                 if pattern[0] != s[0] and pattern[0] != ".":
-                    return self.match(s,pattern[2:])
+                    return self.match(s, pattern[2:])
                 else:
                     # 分为*前取0个、1个、多个字符的情况。
-                    return self.match(s,pattern[2:]) or \
-                           self.match(s[1:],pattern[2:] or self.match(s[1:],pattern))
+                    return self.match(s,pattern[2:]) or self.match(s[1:],pattern[2:]) or self.match(s[1:],pattern)
             else:
                 if pattern[0] == s[0] or pattern[0] == ".":
                     return self.match(s[1:], pattern[1:])
                 else:
                     return False
 
+
 s = "a"
 p = "aa.a"
 p1 = "ab*ac*a"
 p3 = ".*"
-result = Solution().match("ab", ".*")
+result = Solution().match("a", ".*")
 print(result)
+print("a"[1:],",",type("a"[1:]))
 # note
 # print(s[3:])
 
