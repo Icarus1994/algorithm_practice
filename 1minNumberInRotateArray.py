@@ -6,16 +6,14 @@ class Solution:
             return 0
         elif length ==1:
             return rotateArray[0]
-        fg = 0
+        elif rotateArray[0] == rotateArray[len(rotateArray)-1]:
+            return rotateArray[0]
+        
         for i in range(length-1,0,-1):
             if rotateArray[i] < rotateArray[i-1]:
-                fg = 1
                 break
-        if fg:
-            return rotateArray[i]
-        # 数组未旋转或者数组中所有元素相同时返回第一个元素
-        else:
-            return rotateArray[0]
+        # 这里没考虑第0个是最小元素的情况，因为认为至少有一个旋转数组        
+        return rotateArray[i]
 
 list = [3,4,5,1,2]
 list1 = [1,2,4,4,6]
