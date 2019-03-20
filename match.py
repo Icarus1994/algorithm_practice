@@ -57,7 +57,6 @@ class Solution:
                 else:
                     return False
 
-
 s = "a"
 p = "aa.a"
 p1 = "ab*ac*a"

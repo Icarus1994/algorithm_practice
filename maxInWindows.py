@@ -24,3 +24,10 @@ num = [2,3,4,2,6,2,5,1]
 size = 8
 result = Solution().maxInWindows(num,size)
 print(result)
+
+
+# 思路1
+# 如代码所示，最大时间复杂度O(size*n)
+
+# 思路2
+# 参考讨论区双向队列
