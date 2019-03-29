@@ -5,33 +5,17 @@ class TreeNode:
         self.left = None
         self.right = None
 class Solution:
-    def DoesTree1HaveTree2(self, pRoot1, pRoot2):
-        # 根据下行代码可知当pRoot2为空而pRoot1不为空时可以认为树B是树A的子结构
-        # not pRoot2包括仅仅pRoot2为空和pRoot1以及pRoot2同时为空的情况
-        if not pRoot2:
-            return True
-        if not pRoot1:
+    def IsSameTree(self, r1, r2):
+        if not r2: return True
+        if (not r1) or r1.val != r2.val:
             return False
-        if pRoot1.val != pRoot2.val:
-            return False
-        return self.DoesTree1HaveTree2(pRoot1.left, pRoot2.left) and \
-               self.DoesTree1HaveTree2(pRoot1.right,pRoot2.right)
+        return self.IsSameTree(r1.left,r2.left) and self.IsSameTree(r1.right, r2.right)
 
     def HasSubtree(self, pRoot1, pRoot2):
         # write code here
-        result = False
-        # 因为hasSutree中有递归，所以If语句会被重复调用
-        if pRoot1 and pRoot2:
-            if pRoot1.val == pRoot2.val:
-                result = self.DoesTree1HaveTree2(pRoot1, pRoot2)
-            if not result:
-                result = self.HasSubtree(pRoot1.left, pRoot2)
-            if not result:
-                result = self.HasSubtree(pRoot1.right, pRoot2)
-        return result
-
-# 题目描述
-# 输入两棵二叉树A，B，判断B是不是A的子结构（约定空树不是任意一个树的子结构）。
-
-# 思路
-# 问题可用回溯法解决，因此考虑用递归的方式写出
+        if not pRoot1 or not pRoot2:
+            return False
+        if pRoot1.val == pRoot2.val:
+            ans = self.IsSameTree(pRoot1,pRoot2)
+            if ans:return True
+        return self.HasSubtree(pRoot1.left, pRoot2) or self.HasSubtree(pRoot1.right, pRoot2)
