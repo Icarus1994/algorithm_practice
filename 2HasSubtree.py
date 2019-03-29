@@ -6,6 +6,7 @@ class TreeNode:
         self.right = None
 class Solution:
     def IsSameTree(self, r1, r2):
+        # 注意这里是要判断r2是否是r1的子树，因此当r2已经被遍历完了就可以认为r2是r1子树了
         if not r2: return True
         if (not r1) or r1.val != r2.val:
             return False
