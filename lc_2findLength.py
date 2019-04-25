@@ -21,3 +21,6 @@ B = [3, 2, 1, 4, 7]
 ans = Solution().findLength(A, B)
 print(ans)
 
+# 原理参考
+# https://blog.csdn.net/hrn1216/article/details/51534607
+
